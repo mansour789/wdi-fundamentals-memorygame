@@ -25,34 +25,36 @@ var cardsInPlay = [];
 
 function checkForMath(){
 
+	var winMessage = document.getElementById("textPlayAgain");
+
 	if (cardsInPlay[0] === cardsInPlay[1]) {
 	 	 //console.log
-	 	 alert("You found a match!");
+	 	// alert("You found a match!");
+	 	 
+	 	 winMessage.innerHTML = "You found a match!";
+	 	 playAgain();
 	} else {
 	 	//console.log
-	 	alert("Sorry, try again.");
+	 	//alert("Sorry, try again.");
+	 	winMessage.innerHTML = "Sorry, try again.";
+	 	playAgain();
 	}
-}
+};
 
-function flipCard() {
+function flipCard(cardId) {
 
 	var cardId = this.getAttribute('data-id');
 	this.setAttribute('src', cards[cardId].cardImage);
 
-
-	if (cardsInPlay.length > 1){
-			if (cardsInPlay[0] === cardsInPlay[1]){
-				checkForMath();
-				//alert('You found a match!');
-			}else {
-				//alert(' Sorry, try again.');
-			checkForMath();
-			}
-	}
-
 	cardsInPlay.push(cards[cardId].rank);
-	
+
+if (cardsInPlay.length === 2) {
+	checkForMath();
 }
+
+	
+	
+};
 function createBoard() {
 	for (var i = 0; i < cards.length; i++){
 		var cardElement = document.createElement('img');
@@ -61,8 +63,25 @@ function createBoard() {
 		cardElement.addEventListener('click', flipCard);
 		document.getElementById('game-board').appendChild(cardElement);
 	}
-}
+};
 
 createBoard();
+
+function playAgain(){
+
+		var show = document.getElementById("playAgain");
+		show.style.display = "block";
+
+		document.getElementById("button").onclick = function(){
+			show.style.display = "none";
+
+		document.getElementById('game-board').innerHTML = "";
+		createBoard();
+		cardsInPlay = [];
+		}
+	
+
+};
+
 
 

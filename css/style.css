@@ -89,3 +89,23 @@ font-size: 0;
 	color: #F15B31;
 	font-weight: 700;
 }
+#playAgain {
+	display:none;
+}
+#textPlayAgain{
+	font-family: "Droid Serif", serif;
+	line-height: 26px;
+	font-size: 40px;
+	color: #0D2C40;
+
+}
+#button{
+	background-color: #F15B31;
+	color: #0D2C40;
+	font-size: 20px;
+	padding: 7px;
+	border: 1px solid #0D2C40;
+	border-radius: 8px;
+	
+
+}
