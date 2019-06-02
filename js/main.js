@@ -21,6 +21,7 @@ var cards = [
 	}
 ];
 
+
 var cardsInPlay = [];
 
 function checkForMath(){
@@ -48,40 +49,62 @@ function flipCard(cardId) {
 
 	cardsInPlay.push(cards[cardId].rank);
 
+
 if (cardsInPlay.length === 2) {
 	checkForMath();
+
 }
 
 	
 	
 };
 function createBoard() {
+
+	 
+
 	for (var i = 0; i < cards.length; i++){
+
 		var cardElement = document.createElement('img');
 		cardElement.setAttribute('src', 'images/back.png');
 		cardElement.setAttribute('data-id', i);
 		cardElement.addEventListener('click', flipCard);
 		document.getElementById('game-board').appendChild(cardElement);
+
 	}
+
 };
 
 createBoard();
+
 
 function playAgain(){
 
 		var show = document.getElementById("playAgain");
 		show.style.display = "block";
 
+
 		document.getElementById("button").onclick = function(){
 			show.style.display = "none";
 
+
 		document.getElementById('game-board').innerHTML = "";
 		createBoard();
+
 		cardsInPlay = [];
+		shuffleArray(cards);
+
 		}
 	
 
 };
+function shuffleArray(cards){
+	for( var i = cards.length - 1; i > 0 ; i--){
+		const j = Math.floor(Math.random() * (i + 1));
+		[cards[i], cards[j]] = [cards[j], cards[i]];
+	}
+};
+ 
+
 
 
 
