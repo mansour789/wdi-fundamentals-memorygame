@@ -22,25 +22,40 @@ var cards = [
 ];
 
 
+
+
 var cardsInPlay = [];
+var tryTime = 0;
+var scoreing = 0;
+
 
 function checkForMath(){
+
 
 	var winMessage = document.getElementById("textPlayAgain");
 
 	if (cardsInPlay[0] === cardsInPlay[1]) {
 	 	 //console.log
 	 	// alert("You found a match!");
-	 	 
+	 	 tryTime += 1;
+	 	 scoreing +=1;
+	 	 score(tryTime, scoreing);
 	 	 winMessage.innerHTML = "You found a match!";
 	 	 playAgain();
+	 	 
 	} else {
 	 	//console.log
 	 	//alert("Sorry, try again.");
+	 	tryTime += 1;
+	 	score(tryTime, scoreing);
 	 	winMessage.innerHTML = "Sorry, try again.";
 	 	playAgain();
+	 	
 	}
+
 };
+
+
 
 function flipCard(cardId) {
 
@@ -58,6 +73,7 @@ if (cardsInPlay.length === 2) {
 	
 	
 };
+
 function createBoard() {
 
 	 
@@ -75,6 +91,7 @@ function createBoard() {
 };
 
 createBoard();
+score();
 
 
 function playAgain(){
@@ -102,6 +119,12 @@ function shuffleArray(cards){
 		const j = Math.floor(Math.random() * (i + 1));
 		[cards[i], cards[j]] = [cards[j], cards[i]];
 	}
+};
+
+
+function score(tryTime, correctTime){
+	document.getElementById("score").innerHTML = "Your total trying is<strong style='color:#F15B31;'> " + tryTime + "</strong> time/s. Your correct guesses is <strong style='color:#F15B31;'> " + correctTime + " </strong>guess/es."; 
+
 };
  
 

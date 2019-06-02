@@ -106,6 +106,9 @@ font-size: 0;
 	padding: 7px;
 	border: 1px solid #0D2C40;
 	border-radius: 8px;
-	
 
+}
+span {
+	color: #F15B31;
+	font-weight: bold;
 }
