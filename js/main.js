@@ -123,7 +123,7 @@ function shuffleArray(cards){
 
 
 function score(tryTime, correctTime){
-	document.getElementById("score").innerHTML = "Your total trying is<strong style='color:#F15B31;'> " + tryTime + "</strong> time/s. Your correct guesses is <strong style='color:#F15B31;'> " + correctTime + " </strong>guess/es."; 
+	document.getElementById("score").innerHTML = "Your correct guesses is/ are <strong style='color:#F15B31;'> " + correctTime + "</strong> guess/es from total  of <strong style='color:#F15B31;'> " + tryTime + " </strong>guess/es."; 
 
 };
  
