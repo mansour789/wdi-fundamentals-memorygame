@@ -27,6 +27,7 @@ var cards = [
 var cardsInPlay = [];
 var tryTime = 0;
 var scoreing = 0;
+var sameCards = [];
 
 
 function checkForMath(){
@@ -42,6 +43,7 @@ function checkForMath(){
 	 	 score(tryTime, scoreing);
 	 	 winMessage.innerHTML = "You found a match!";
 	 	 playAgain();
+	 	 sameCards = [];
 	 	 
 	} else {
 	 	//console.log
@@ -50,6 +52,7 @@ function checkForMath(){
 	 	score(tryTime, scoreing);
 	 	winMessage.innerHTML = "Sorry, try again.";
 	 	playAgain();
+	 	sameCards = [];
 	 	
 	}
 
@@ -63,12 +66,19 @@ function flipCard(cardId) {
 	this.setAttribute('src', cards[cardId].cardImage);
 
 	cardsInPlay.push(cards[cardId].rank);
+	sameCards.push(cards[cardId].cardImage);
 
 
 if (cardsInPlay.length === 2) {
-	checkForMath();
+	if (sameCards[0] === sameCards[1]) {
 
-}
+		
+		wrong();
+	}else {
+		checkForMath();
+	};
+
+};
 
 	
 	
@@ -103,11 +113,14 @@ function playAgain(){
 		document.getElementById("button").onclick = function(){
 			show.style.display = "none";
 
+			
+
 
 		document.getElementById('game-board').innerHTML = "";
 		createBoard();
 
 		cardsInPlay = [];
+		sameCards = [];
 		shuffleArray(cards);
 
 		}
@@ -126,6 +139,20 @@ function score(tryTime, correctTime){
 	document.getElementById("score").innerHTML = "Your correct guesses are <strong style='color:#F15B31;'> " + correctTime + "</strong> guess/es from total  of <strong style='color:#F15B31;'> " + tryTime + " </strong>guess/es."; 
 
 };
+
+function wrong(){
+
+	
+
+	var winMessage = document.getElementById("textPlayAgain");
+
+	winMessage.innerHTML = "<strong style='color:#F15B31;'> You can't choose the same card twice! </strong>";
+	
+	
+	playAgain();
+
+	
+}
  
 
 
